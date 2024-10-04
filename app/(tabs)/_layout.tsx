@@ -19,7 +19,7 @@ export default function TabLayout() {
         options={{
           title: 'Races',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <TabBarIcon name={focused ? 'car' : 'car-outline'} color={color} />
           ),
         }}
       />
@@ -28,7 +28,7 @@ export default function TabLayout() {
         options={{
           title: 'News',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <TabBarIcon name={focused ? 'newspaper' : 'newspaper-outline'} color={color} />
           ),
         }}
       />
@@ -37,7 +37,7 @@ export default function TabLayout() {
         options={{
           title: 'Tables',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <TabBarIcon name={focused ? 'settings' : 'settings-outline'} color={color} />
           ),
         }}
       />
