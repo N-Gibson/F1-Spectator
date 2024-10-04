@@ -16,6 +16,18 @@ export default function HomeScreen() {
   );
 }
 
+const getRaces = async () => {
+  try {
+    const response = await fetch(
+      'https://v1.formula-1.api-sports.io/competitions',
+    );
+    const json = await response.json();
+    console.log(json);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
