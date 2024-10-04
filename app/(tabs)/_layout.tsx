@@ -2,6 +2,7 @@ import { Tabs } from 'expo-router';
 import React from 'react';
 
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
@@ -19,7 +20,7 @@ export default function TabLayout() {
         options={{
           title: 'Races',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'car' : 'car-outline'} color={color} />
+            <TabBarIcon name={focused ? 'car-sport' : 'car-sport-outline'} color={color} />
           ),
         }}
       />
@@ -37,7 +38,7 @@ export default function TabLayout() {
         options={{
           title: 'Tables',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'settings' : 'settings-outline'} color={color} />
+            <TabBarIcon name={focused ? 'stats-chart' : 'stats-chart-outline'} color={color} />
           ),
         }}
       />
