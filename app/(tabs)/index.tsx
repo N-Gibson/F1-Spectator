@@ -1,10 +1,9 @@
 import { Image, StyleSheet, Platform } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { Race } from '@/components/Race'
 
 const key = process.env.EXPO_PUBLIC_KEY
 const currentYear = new Date().getFullYear();
@@ -39,7 +38,7 @@ export default function HomeScreen() {
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
       headerImage={<Ionicons size={310} name="code-slash" style={styles.reactLogo} />}>
-        <ThemedText>Races</ThemedText>
+        {/* <Race race={races}></Race> */}
     </ParallaxScrollView>
   );
 }
