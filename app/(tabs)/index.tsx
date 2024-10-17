@@ -6,6 +6,23 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
+const key = JSON.stringify(process.env.EXPO_PUBLIC_KEY)
+const currentYear = new Date().getFullYear();
+
+fetch(`https://v1.formula-1.api-sports.io/season=${currentYear}`, {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "v1.formula-1.api-sports.io",
+		"x-rapidapi-key": key
+	}
+})
+.then(response => {
+	console.log(response);
+})
+.catch(err => {
+	console.log(err);
+});
+
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
