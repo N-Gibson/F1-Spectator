@@ -6,29 +6,40 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
-const key = JSON.stringify(process.env.EXPO_PUBLIC_KEY)
+const key = process.env.EXPO_PUBLIC_KEY
 const currentYear = new Date().getFullYear();
 
-fetch(`https://v1.formula-1.api-sports.io/season=${currentYear}`, {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "v1.formula-1.api-sports.io",
-		"x-rapidapi-key": key
-	}
-})
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.log(err);
-});
+async function getRaces() {
+  try {
+    const response = await fetch(`https://v1.formula-1.api-sports.io/races?season=${currentYear}`, {
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-host": "v1.formula-1.api-sports.io",
+        "x-rapidapi-key": key
+
+      }
+    })
+
+    if(!response.ok) {
+      throw new Error('No races for you!')
+    }
+
+    const races = await response.json();
+    console.log(races.response)
+    return races.response
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const races = getRaces()
 
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
       headerImage={<Ionicons size={310} name="code-slash" style={styles.reactLogo} />}>
-        <ThemedText>News</ThemedText>
+        <ThemedText>Races</ThemedText>
     </ParallaxScrollView>
   );
 }
