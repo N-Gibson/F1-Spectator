@@ -6,71 +6,6 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { Race } from '@/components/Race'
 
-
-// async function getRaces() {
-//   const []
-//   const currentYear = new Date().getFullYear();
-//   const key = process.env.EXPO_PUBLIC_KEY
-
-//   try {
-//     const response = await fetch(`https://v1.formula-1.api-sports.io/races?season=${currentYear}`, {
-//       "method": "GET",
-//       "headers": {
-//         "x-rapidapi-host": "v1.formula-1.api-sports.io",
-//         "x-rapidapi-key": key
-
-//       }
-//     })
-
-//     if(!response.ok) {
-//       throw new Error('No races for you!')
-//     }
-
-//     return response
-//   } catch (error) {
-//     console.error(error)
-//   }
-// }
-
-// let races = getRaces()
-// console.log(races)
-
-const sampleData: any = [
-  {
-    id: 1857,
-    competition: {
-      id: 2,
-      name: "Bahrain Grand Prix",
-      location: {
-      country: "Bahrain",
-      city: "Sakhir",
-      }
-    },
-    circuit: {
-      id: 2,
-      name: "Bahrain International Circuit",
-      image: "https://media.api-sports.io/formula-1/circuits/2.png",
-    },
-    season: 2024,
-    type: "Race",
-    laps: {
-    current: null,
-    total: 57,
-    },
-    fastest_lap: {
-    driver: {
-    id: 25,
-    },
-    time: "1:32.608",
-    },
-    distance: "308.5 Kms",
-    timezone: "utc",
-    date: "2024-03-02T15:00:00+00:00",
-    weather: null,
-    status: "Completed",
-  }
-]
-
 export default function HomeScreen() {
   const [races, setRaces] = useState()
 
@@ -94,8 +29,6 @@ export default function HomeScreen() {
     getRaces()
     .catch(console.error)
   }, [])
-
-  console.log(races)
 
   return (
     <ParallaxScrollView
