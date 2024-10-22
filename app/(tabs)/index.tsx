@@ -12,7 +12,7 @@ export default function HomeScreen() {
   useEffect(() => {
     const getRaces = async () => {
       const currentYear = new Date().getFullYear();
-      const key = process.env.EXPO_PUBLIC_KEY
+      const key:any = process.env.EXPO_PUBLIC_KEY
       const data = await fetch(`https://v1.formula-1.api-sports.io/races?season=${currentYear}`, {
           "method": "GET",
           "headers": {
