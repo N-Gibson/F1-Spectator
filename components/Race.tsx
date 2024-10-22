@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { PropsWithChildren, useState } from 'react';
-import { StyleSheet, TouchableOpacity, useColorScheme, FlatList, Text } from 'react-native';
+import { PropsWithChildren, useState,} from 'react';
+import { StyleSheet, TouchableOpacity, useColorScheme, FlatList, Text, View, SafeAreaView } from 'react-native';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -8,10 +8,20 @@ import { Colors } from '@/constants/Colors';
 
 export function Race({races}: any) {
 
-console.log('this is the race', races)
+  type RaceProps = { raceName: string }
+
+  const Race = ({ raceName }: RaceProps ) => (
+    <View>
+      <Text style={styles.container}>{raceName}</Text>
+    </View>
+  );
 
   return (
-    <Text style={styles.container}>{races[6].competition.name}</Text>
+    <SafeAreaView>
+      <FlatList data={races} renderItem={({ item }) => <Race raceName={item.competition.name}/>}/>
+    </SafeAreaView>
+
+    // <Text style={styles.container}>{races[6].competition.name}</Text>
     // <Text>{races.map((race: { competition: { name: any; }; }) => race.competition.name)}</Text>
   );
 }
