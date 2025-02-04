@@ -1,4 +1,4 @@
-import { StyleSheet, FlatList, Text, View, SafeAreaView } from 'react-native';
+import { StyleSheet, FlatList, Text, View, SafeAreaView, ScrollView } from 'react-native';
 
 export function Race({races}: any) {
 
@@ -6,19 +6,19 @@ export function Race({races}: any) {
 
   const Race = ({ raceName }: RaceProps ) => (
     <View>
-      <Text style={styles.container}>{raceName}</Text>
+      <Text style={styles.content}>{raceName}</Text>
     </View>
   );
 
   return (
-    <SafeAreaView>
+    <ScrollView>
       <FlatList data={races} renderItem={({ item }) => <Race raceName={item.competition.name}/>}/>
-    </SafeAreaView>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
+  content: {
+    color: 'black',
   }
 });
