@@ -13,7 +13,7 @@ export default function HomeScreen() {
     const getRaces = async () => {
       const currentYear = new Date().getFullYear();
       const key:any = process.env.EXPO_PUBLIC_KEY
-      const data = await fetch(`https://v1.formula-1.api-sports.io/races?season=${currentYear}`, {
+      const data = await fetch(`https://v1.formula-1.api-sports.io/races?season=${2022}`, {
           "method": "GET",
           "headers": {
             "x-rapidapi-host": "v1.formula-1.api-sports.io",
@@ -23,6 +23,7 @@ export default function HomeScreen() {
         })
 
         const races = await data.json()
+        console.log(races)
         setRaces(races.response)
     }
 
