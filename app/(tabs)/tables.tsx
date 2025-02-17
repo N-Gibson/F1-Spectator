@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, Image, Platform } from 'react-native';
-import { Tabs } from 'expo-router'
+import { StyleSheet, Image, Platform, View } from 'react-native';
+import { Stack, Tabs } from 'expo-router'
 
 import { Collapsible } from '@/components/Collapsible';
 import { ExternalLink } from '@/components/ExternalLink';
@@ -17,10 +17,10 @@ export default function Tables() {
   const colorScheme = useColorScheme();
 
   return (
-    <ScrollView>
-      <Link href="/(stack)/constructors">Constructors</Link>
-      <Link href="/(stack)/champions">Champions</Link>
-    </ScrollView>
+    <View style={styles.titleContainer}>
+      <Link style={styles.tableButton} href="/constructors">Constructors</Link>
+      <Link style={styles.tableButton} href="/champions">Champions</Link>
+    </View>
   );
 }
 
@@ -34,5 +34,13 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     gap: 8,
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: 'lightgrey',
+    height: 50,
+  },
+  tableButton: {
+    backgroundColor: 'red',
   },
 });
