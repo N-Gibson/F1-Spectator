@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet, Platform, ScrollView } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useState, useEffect } from 'react';
 
@@ -12,8 +12,8 @@ export default function HomeScreen() {
   useEffect(() => {
     const getRaces = async () => {
       const currentYear = new Date().getFullYear();
-      const key = process.env.EXPO_PUBLIC_KEY
-      const data = await fetch(`https://v1.formula-1.api-sports.io/races?season=${currentYear}`, {
+      const key:any = process.env.EXPO_PUBLIC_KEY
+      const data = await fetch(`https://v1.formula-1.api-sports.io/races?season=${2022}`, {
           "method": "GET",
           "headers": {
             "x-rapidapi-host": "v1.formula-1.api-sports.io",
@@ -23,6 +23,7 @@ export default function HomeScreen() {
         })
 
         const races = await data.json()
+        console.log(races)
         setRaces(races.response)
     }
 
@@ -31,29 +32,14 @@ export default function HomeScreen() {
   }, [])
 
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={<Ionicons size={310} name="code-slash" style={styles.reactLogo} />}>
-        <Race races={races}></Race>
-    </ParallaxScrollView>
+    <ScrollView>
+        <Race style={styles.container} races={races}></Race>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  container: {
+    backgroundColor: '#fff'
   },
 });
